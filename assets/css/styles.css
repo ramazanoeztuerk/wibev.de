@@ -40,6 +40,11 @@
   --max-width: 1200px;
 }
 
+/* Force light mode - disable browser/OS dark mode */
+:root {
+  color-scheme: light only;
+}
+
 /* --- Base & Reset --- */
 *, *::before, *::after {
   box-sizing: border-box;

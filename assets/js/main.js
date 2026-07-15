@@ -4,6 +4,20 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  // --- Scroll Animation (Intersection Observer) ---
+  const animateElements = document.querySelectorAll('.animate-in');
+  if (animateElements.length > 0) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+    animateElements.forEach(el => observer.observe(el));
+  }
+
   // --- Sticky Header Scroll Effect ---
   const header = document.querySelector('.header');
   const scrollTopBtn = document.querySelector('.scroll-top-btn');

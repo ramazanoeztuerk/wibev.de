@@ -69,8 +69,8 @@
 
   /* ── Layout ── */
   --max-width: 1200px;
-  --header-height: 100px;
-  --header-height-scrolled: 72px;
+  --header-height: 140px;
+  --header-height-scrolled: 96px;
 }
 
 :root {
@@ -243,30 +243,6 @@ button, input, textarea, select {
   margin-top: 16px;
 }
 
-/* ── Badges ── */
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 16px;
-  font-size: 0.82rem;
-  font-weight: 600;
-  border-radius: var(--radius-full);
-  text-transform: uppercase;
-  letter-spacing: 1.2px;
-  margin-bottom: 16px;
-}
-
-.badge-primary {
-  background-color: var(--primary-alpha);
-  color: var(--primary-color);
-}
-
-.badge-accent {
-  background-color: var(--accent-light);
-  color: var(--accent-hover);
-}
-
 /* ── Buttons ── */
 .btn {
   display: inline-flex;
@@ -359,16 +335,13 @@ button, input, textarea, select {
   z-index: 1000;
   display: flex;
   align-items: center;
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: #ffffff;
   border-bottom: 1px solid rgba(84, 60, 50, 0.06);
-  transition: all var(--duration-normal) var(--ease-in-out);
 }
 
 .header-scrolled {
   height: var(--header-height-scrolled);
-  background: rgba(255, 255, 255, 0.92);
+  background: #ffffff;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
 }
 
@@ -385,13 +358,11 @@ button, input, textarea, select {
 }
 
 .logo-img {
-  height: 72px;
+  height: 120px;
   width: auto;
-  transition: height var(--duration-normal) var(--ease-in-out);
-  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.08));
 }
 
-.header-scrolled .logo-img { height: 52px; }
+.header-scrolled .logo-img { height: 80px; }
 
 /* ── Navigation ── */
 .nav {
@@ -1131,22 +1102,6 @@ button, input, textarea, select {
   background: linear-gradient(180deg, var(--bg-footer-top) 0%, var(--bg-footer) 40%);
   color: rgba(255, 255, 255, 0.78);
   padding: 88px 0 32px 0;
-  overflow: hidden;
-}
-
-/* Wave divider */
-.footer::before {
-  content: '';
-  position: absolute;
-  top: -1px;
-  left: 0;
-  width: 200%;
-  height: 60px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 60' preserveAspectRatio='none'%3E%3Cpath d='M0,30 C240,50 480,10 720,30 C960,50 1200,10 1440,30 L1440,60 L0,60 Z' fill='%23faf7f2'/%3E%3C/svg%3E") repeat-x;
-  background-size: 720px 60px;
-  animation: waveMove 8s linear infinite;
-  pointer-events: none;
-  z-index: 1;
 }
 
 .footer .container { position: relative; z-index: 2; }
@@ -1733,8 +1688,8 @@ button, input, textarea, select {
 
 @media (max-width: 768px) {
   :root {
-    --header-height: 80px;
-    --header-height-scrolled: 64px;
+    --header-height: 100px;
+    --header-height-scrolled: 80px;
   }
 
   .section { padding: 72px 0; }
@@ -1749,9 +1704,7 @@ button, input, textarea, select {
     left: -100%;
     width: 100%;
     height: calc(100vh - var(--header-height));
-    background: rgba(255, 255, 255, 0.96);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
+    background: #ffffff;
     flex-direction: column;
     padding: 48px 24px;
     align-items: center;
@@ -1826,5 +1779,4 @@ button, input, textarea, select {
   .hero-buttons { flex-direction: column; width: 100%; }
   .hero-buttons .btn { width: 100%; }
   .services-grid { gap: 20px; }
-  .footer::before { height: 40px; background-size: 360px 40px; }
 }

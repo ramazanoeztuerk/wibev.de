@@ -169,15 +169,9 @@
             <!-- Bus Option -->
             <div class="oepnv-transit-option">
               <div class="oepnv-route-card-header">
-                <span class="oepnv-line-badge oepnv-line-badge-bus-600">600</span>
-                <span class="oepnv-line-badge oepnv-line-badge-bus-611">611</span>
-                <span class="oepnv-line-badge oepnv-line-badge-bus-e870">E870</span>
-                <span class="oepnv-line-badge oepnv-line-badge-bus-e874">E874</span>
-                <span class="oepnv-line-badge oepnv-line-badge-bus-e876">E876</span>
-                <span class="oepnv-line-badge oepnv-line-badge-ne1">NE1</span>
                 <span class="oepnv-stop-name">Otobüs</span>
               </div>
-              <p>Hatlar Pestalozzistraße durağına kadar gitmektedir.</p>
+              <p>600, 611, E870, E874, E876 ve NE1 hatları Pestalozzistraße durağına kadar gitmektedir.</p>
             </div>
 
             <!-- Walking Directions -->
@@ -185,7 +179,7 @@
               <div class="oepnv-route-card-header">
                 <span class="oepnv-stop-name">Duraktan binaya yürüyüş tarifi</span>
               </div>
-              <p>Pestalozzistraße durağından çıktıktan sonra Pestalozzistraße üzerinde güney yönünde Friedrich-Ebert-Straße'ye, B7 ana caddesine doğru ilerleyin. Kavşakta sola Friedrich-Ebert-Straße'ye dönün ve caddeyi batı yönünde yaklaşık 150 metre takip edin. 175 numaralı bina caddenin sol tarafındadır.</p>
+              <p>Pestalozzistraße durağından çıktıktan sonra Pestalozzistraße üzerinde güney yönünde Friedrich-Ebert-Straße (B7) ana caddesine doğru ilerleyin. Kavşakta sola Friedrich-Ebert-Straße'ye dönün ve caddeyi batı yönünde yaklaşık 150 metre takip edin. 175 numaralı bina caddenin sol tarafındadır.</p>
             </div>
 
             <!-- Route Meta -->

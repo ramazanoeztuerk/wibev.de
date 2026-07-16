@@ -975,6 +975,340 @@ button, input, textarea, select {
 .event-time, .event-location { font-size: 0.78rem; color: var(--text-muted); display: flex; align-items: center; gap: 4px; }
 
 /* ═══════════════════════════════════════════════════════════════════════════
+   ÖPNV ANREISE – Public Transit Directions
+   ═══════════════════════════════════════════════════════════════════════════ */
+.oepnv-tabs-wrapper {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+/* ── Route Stack (flat cards, no tabs) ── */
+.oepnv-route-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.oepnv-route-card {
+  background: var(--bg-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(84, 60, 50, 0.05);
+  padding: 36px 40px;
+  transition: box-shadow var(--duration-normal) var(--ease-in-out);
+}
+
+.oepnv-route-card:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+/* ── Route Card Header ── */
+.oepnv-route-card-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.oepnv-stop-name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+}
+
+/* ── Line Badges ── */
+.oepnv-line-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  font-size: 0.88rem;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.oepnv-line-badge-schwebebahn {
+  background: #0069B4;
+  color: white;
+  box-shadow: 0 2px 8px rgba(0, 105, 180, 0.3);
+}
+
+.oepnv-line-badge-bus-600 {
+  background: #E2001A;
+  color: white;
+  box-shadow: 0 2px 8px rgba(226, 0, 26, 0.25);
+}
+
+.oepnv-line-badge-bus-601 {
+  background: #E2001A;
+  color: white;
+  box-shadow: 0 2px 8px rgba(226, 0, 26, 0.25);
+}
+
+.oepnv-line-badge-bus-611 {
+  background: #E35205;
+  color: white;
+  box-shadow: 0 2px 8px rgba(227, 82, 5, 0.25);
+}
+
+.oepnv-line-badge-bus-e870 {
+  background: #008A3D;
+  color: white;
+  box-shadow: 0 2px 8px rgba(0, 138, 61, 0.25);
+}
+
+.oepnv-line-badge-bus-e874 {
+  background: #0077B6;
+  color: white;
+  box-shadow: 0 2px 8px rgba(0, 119, 182, 0.25);
+}
+
+.oepnv-line-badge-bus-e876 {
+  background: #6B2FA0;
+  color: white;
+  box-shadow: 0 2px 8px rgba(107, 47, 160, 0.25);
+}
+
+.oepnv-line-badge-ne1 {
+  background: #4B0082;
+  color: white;
+  box-shadow: 0 2px 8px rgba(75, 0, 130, 0.3);
+}
+
+/* ── Steps ── */
+.oepnv-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.oepnv-step {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.oepnv-step-marker {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+  color: var(--text-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1rem;
+  font-family: 'Outfit', sans-serif;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(84, 60, 50, 0.2);
+}
+
+.oepnv-step-body h4 {
+  font-size: 1.08rem;
+  color: var(--primary-dark);
+  margin-bottom: 4px;
+  font-weight: 700;
+}
+
+.oepnv-step-body p {
+  color: var(--text-muted);
+  font-size: 0.93rem;
+  line-height: 1.7;
+}
+
+/* ── Route Meta (Fußweg-Hinweis) ── */
+.oepnv-route-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(84, 60, 50, 0.06);
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.oepnv-route-meta svg {
+  flex-shrink: 0;
+  color: var(--accent-color);
+  opacity: 0.7;
+}
+
+/* ── Alternative Hint ── */
+.oepnv-alternative {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: var(--accent-light);
+  border-left: 4px solid var(--accent-color);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 16px 20px;
+  color: var(--primary-dark);
+}
+
+.oepnv-alternative svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--accent-hover);
+}
+
+.oepnv-alternative p {
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--text-dark);
+}
+
+/* ── Transit Option (Schwebebahn/Bus blocks) ── */
+.oepnv-transit-option {
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(84, 60, 50, 0.06);
+}
+
+.oepnv-transit-option:first-child {
+  padding-top: 0;
+}
+
+.oepnv-transit-option:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.oepnv-transit-option h4 {
+  font-size: 1.05rem;
+  color: var(--primary-dark);
+  margin-bottom: 10px;
+}
+
+.oepnv-transit-option p {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+/* ── Barrier-free notice ── */
+.oepnv-barrierfree {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: #e8f0e8;
+  border-left: 4px solid #3a7d3a;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 16px 20px;
+  margin-top: 20px;
+}
+
+.oepnv-barrierfree svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: #3a7d3a;
+}
+
+.oepnv-barrierfree p {
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.6;
+  color: #2a4d2a;
+}
+
+/* ── Line Group ── */
+.oepnv-line-group {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.oepnv-bus-intro {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.75;
+  margin-bottom: 28px;
+}
+
+.oepnv-bus-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.oepnv-bus-route {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px;
+  background: var(--bg-warm);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(84, 60, 50, 0.05);
+}
+
+.oepnv-bus-route p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+/* ── Transit Logos ── */
+.oepnv-transit-logos {
+  display: flex;
+  gap: 12px;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(84, 60, 50, 0.06);
+}
+
+.oepnv-transit-logo {
+  width: 56px;
+  height: 28px;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: var(--shadow-xs);
+}
+
+.oepnv-transit-logo svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ── Responsive ÖPNV ── */
+@media (max-width: 768px) {
+  .oepnv-route-card {
+    padding: 24px;
+  }
+
+  .oepnv-route-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .oepnv-step-marker {
+    width: 34px;
+    height: 34px;
+    font-size: 0.9rem;
+  }
+
+  .oepnv-step-body h4 {
+    font-size: 1rem;
+  }
+
+  .oepnv-bus-route {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
    CONTACT SECTION
    ═══════════════════════════════════════════════════════════════════════════ */
 .contact-grid {

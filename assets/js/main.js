@@ -21,6 +21,7 @@
     initNewsFilter();
     initContactForm();
     initLangToggle();
+    initOepnvTabs();
   });
 
   /* ═══════════════════════════════════════════════════════════════════════
@@ -407,6 +408,57 @@
         form.reset();
       }, 1500);
     });
+  }
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     ÖPNV TABS
+     ═══════════════════════════════════════════════════════════════════════ */
+  function initOepnvTabs() {
+    const tabs = document.querySelectorAll('.oepnv-tab');
+    const panels = document.querySelectorAll('.oepnv-panel');
+    if (!tabs.length) return;
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.getAttribute('data-tab');
+
+        tabs.forEach(t => {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+
+        panels.forEach(p => {
+          p.classList.remove('active');
+          if (p.getAttribute('data-panel') === target) {
+            p.classList.add('active');
+          }
+        });
+      });
+    });
+
+    // Keyboard navigation
+    const tabNav = document.querySelector('.oepnv-tab-nav');
+    if (tabNav) {
+      tabNav.addEventListener('keydown', (e) => {
+        const current = document.activeElement;
+        if (!current.classList.contains('oepnv-tab')) return;
+
+        let index = Array.from(tabs).indexOf(current);
+        if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          index = (index + 1) % tabs.length;
+          tabs[index].focus();
+          tabs[index].click();
+        } else if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          index = (index - 1 + tabs.length) % tabs.length;
+          tabs[index].focus();
+          tabs[index].click();
+        }
+      });
+    }
   }
 
   /* ═══════════════════════════════════════════════════════════════════════

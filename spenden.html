@@ -31,16 +31,8 @@
         <a href="projekte.html" class="nav-link" id="navProjects">Projekte</a>
         <a href="spenden.html" class="nav-link active" id="navSpenden">Spenden</a>
         <a href="kontakt.html" class="nav-link" id="navContact">Kontakt</a>
-        <button class="lang-toggle" id="langToggle" aria-label="Sprache wechseln">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"></circle>
-            <line x1="2" y1="12" x2="22" y2="12"></line>
-            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-          </svg>
-          TR
-        </button>
       </nav>
+
 
       <div class="nav-toggle" id="navToggle" aria-label="Menü öffnen oder schließen">
         <span></span>
@@ -66,19 +58,19 @@
     <section class="section section-bg-white">
       <div class="container">
         <div class="section-title-wrapper animate-in">
-          <span class="badge badge-primary">Unterstützung</span>
           <h2 class="section-title">Wie Sie helfen können</h2>
           <p class="section-subtitle">Mit Ihren Spenden finanzieren wir die laufenden Projekte und Bauvorhaben unseres
             Vereins.</p>
         </div>
+
 
         <div class="donation-info-grid">
           <!-- Bank Account Info -->
           <div class="bank-details-box animate-in">
             <h3>Bankverbindung</h3>
             <p style="margin-bottom: 24px; color: rgba(255, 255, 255, 0.7);">
-              Überweisungen können direkt auf unser Vereinskonto getätigt werden. Für Spendenbescheinigungen wenden Sie
-              sich bitte an unseren Vorstand.
+              Überweisungen können direkt auf unser Vereinskonto getätigt werden. Bitte geben Sie im Verwendungszweck
+              an, welches Projekt Sie unterstützen möchten (z.&nbsp;B. <strong>„Mädcheninternat"</strong>).
             </p>
             <div class="bank-row">
               <span class="bank-label">Empfänger</span>
@@ -96,49 +88,36 @@
               <span class="bank-label">Bank</span>
               <span class="bank-value">Stadtsparkasse Wuppertal</span>
             </div>
+            <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.15);">
+              <h4 style="color: #fff; margin-bottom: 10px; font-size: 1.05rem;">Spendenbescheinigung</h4>
+              <p style="color: rgba(255, 255, 255, 0.7); line-height: 1.7; font-size: 0.95rem;">
+                Für Spenden ab <strong>200 Euro</strong> stellen wir Ihnen automatisch eine Zuwendungsbestätigung für
+                das Finanzamt aus. Bitte geben Sie bei Ihrer Überweisung Ihren vollständigen Namen und Ihre Anschrift
+                im Verwendungszweck an, damit wir die Bescheinigung korrekt zuordnen können. Für kleinere Beträge
+                genügt der Kassenbeleg beziehungsweise der Überweisungsnachweis.
+              </p>
+            </div>
           </div>
 
-          <!-- Project Timeline -->
+
+          <!-- Project Purpose -->
           <div class="timeline-tracker animate-in">
-            <h3 style="font-size: 1.5rem; margin-bottom: 24px; color: var(--primary-dark);">Aktueller Projektfortschritt
-            </h3>
-
-            <div class="timeline-step completed">
-              <div class="timeline-bullet">1</div>
-              <div class="timeline-content">
-                <h4>Planungsphase des Mädcheninternats</h4>
-                <p>Die detaillierten Grundrisse und pädagogischen Konzepte für das theologische Wohnheim wurden
-                  fertiggestellt.</p>
-              </div>
-            </div>
-
-            <div class="timeline-step active">
-              <div class="timeline-bullet">2</div>
-              <div class="timeline-content">
-                <h4>Baugenehmigungsverfahren</h4>
-                <p>Der Bauantrag befindet sich in der abschließenden Prüfungsphase durch die zuständigen Baubehörden der
-                  Stadt Wuppertal.</p>
-              </div>
-            </div>
-
-            <div class="timeline-step">
-              <div class="timeline-bullet">3</div>
-              <div class="timeline-content">
-                <h4>Bauarbeiten und Innenausbau</h4>
-                <p>Nach Erteilung der Genehmigung beginnen die Renovierungsarbeiten im Gebäude an der
-                  Friedrich-Ebert-Straße.</p>
-              </div>
-            </div>
-
-            <div class="timeline-step">
-              <div class="timeline-bullet">4</div>
-              <div class="timeline-content">
-                <h4>Möblierung und Eröffnung</h4>
-                <p>Die Räume werden für die Schülerinnen eingerichtet und die theologische Ausbildung wird offiziell
-                  aufgenommen.</p>
-              </div>
+            <h3 style="font-size: 1.5rem; margin-bottom: 24px; color: var(--primary-dark);">Wofür Ihre Spende eingesetzt
+              wird</h3>
+            <p style="color: var(--text-muted); line-height: 1.7; margin-bottom: 20px;">
+              Ihre Spenden fließen in unsere laufenden Projekte und Bauvorhaben. Ein Schwerpunkt ist derzeit das
+              <strong>Mädcheninternat für den theologischen Unterricht</strong> in der Friedrich-Ebert-Straße 175 in
+              Wuppertal-Elberfeld, das sich aktuell in der Baugenehmigungsphase befindet.
+            </p>
+            <p style="color: var(--text-muted); line-height: 1.7; margin-bottom: 20px;">
+              Den detaillierten Projektfortschritt mit allen Phasen finden Sie auf unserer
+              <a href="projekte.html" style="color: var(--primary-color); text-decoration: underline;">Projektseite</a>.
+            </p>
+            <div style="margin-top: 8px;">
+              <a href="projekte.html" class="btn btn-outline">Zum Projektfortschritt</a>
             </div>
           </div>
+
         </div>
       </div>
     </section>
@@ -147,7 +126,6 @@
     <section class="section">
       <div class="container">
         <div class="section-title-wrapper animate-in">
-          <span class="badge badge-accent">Zakat</span>
           <h2 class="section-title">Zakat Rechner</h2>
           <p class="section-subtitle">Berechnen Sie Ihren Zakat-Beitrag schnell und einfach auf Basis Ihres aktuellen Nettovermögens.</p>
         </div>
@@ -158,10 +136,16 @@
             style="color: var(--text-muted); margin-bottom: 32px; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;">
             Die Zakat ist eine religiöse Pflichtabgabe für Muslime. Sie beträgt zweieinhalb Prozent des
             Nettovermögens, sofern dieses die Nisab-Schwelle überschreitet. Der aktuelle Nisab-Wert
-            entspricht dem Gegenwert von fünfundachtzig Gramm Feingold. Für diesen Rechner wird ein repräsentativer
-            Goldwert von fünfundsiebzig Euro pro Gramm angenommen, was einer Schwelle von
-            sechstausenddreihundertfünfundsiebzig Euro entspricht.
+            entspricht dem Gegenwert von <strong>85 Gramm Feingold</strong>. Für diesen Rechner wird ein repräsentativer
+            Goldwert von <strong>75 Euro pro Gramm</strong> angenommen, was einer Schwelle von
+            <strong>6.375 Euro</strong> entspricht.
           </p>
+          <p
+            style="color: var(--text-muted); margin-bottom: 32px; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto; font-size: 0.9rem;">
+            <em>Hinweis: Der hier hinterlegte Goldpreis ist ein Referenzwert. Der tatsächliche Nisab-Betrag schwankt
+            mit dem aktuellen Goldpreis und sollte vor der Berechnung anhand des Tageskurses überprüft werden.</em>
+          </p>
+
 
           <form id="zakatForm">
             <div class="zakat-calc-grid">

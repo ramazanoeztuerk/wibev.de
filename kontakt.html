@@ -31,16 +31,8 @@
         <a href="projekte.html" class="nav-link" id="navProjects">Projekte</a>
         <a href="spenden.html" class="nav-link" id="navSpenden">Spenden</a>
         <a href="kontakt.html" class="nav-link active" id="navContact">Kontakt</a>
-        <button class="lang-toggle" id="langToggle" aria-label="Sprache wechseln">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"></circle>
-            <line x1="2" y1="12" x2="22" y2="12"></line>
-            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-          </svg>
-          TR
-        </button>
       </nav>
+
 
       <div class="nav-toggle" id="navToggle" aria-label="Menü öffnen oder schließen">
         <span></span>
@@ -66,10 +58,10 @@
     <section class="section section-bg-white">
       <div class="container">
         <div class="section-title-wrapper animate-in">
-          <span class="badge badge-primary">Kontaktdaten</span>
           <h2 class="section-title">Schreiben Sie uns oder besuchen Sie uns</h2>
           <p class="section-subtitle">Unser Zentrum in Elberfeld ist gut erreichbar und steht Besuchern offen.</p>
         </div>
+
 
         <div class="contact-grid">
           <!-- Details & Map -->
@@ -138,11 +130,78 @@
                   placeholder="Ihre Mitteilung an uns..."></textarea>
               </div>
 
+              <div class="form-group">
+                <label class="form-checkbox">
+                  <input type="checkbox" id="privacyCheck" required>
+                  <span>Ich habe die <a href="datenschutz.html" target="_blank"
+                      style="color: var(--primary-color); text-decoration: underline;">Datenschutzerklärung</a>
+                    gelesen und bin mit der Verarbeitung meiner Daten einverstanden. *</span>
+                </label>
+              </div>
+
               <button type="submit" class="btn btn-primary" style="width: 100%;" id="btnSubmitForm">Nachricht
                 senden</button>
 
+
               <div id="formStatus" class="form-status"></div>
             </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Directions / Anfahrt Section -->
+    <section class="section">
+      <div class="container">
+        <div class="section-title-wrapper animate-in">
+          <h2 class="section-title">Anfahrt</h2>
+          <p class="section-subtitle">So erreichen Sie unser Zentrum in Wuppertal-Elberfeld bequem mit Bus, Schwebebahn
+            oder dem Auto.</p>
+        </div>
+
+        <div class="about-grid" style="align-items: start;">
+          <div class="about-content animate-in">
+            <h3 style="font-size: 1.5rem; color: var(--primary-color); margin-bottom: 16px;">Mit Bus und Schwebebahn</h3>
+            <p class="about-text">
+              Unser Vereinsgebäude liegt in der Friedrich-Ebert-Straße 175 in Wuppertal-Elberfeld und ist mit dem
+              öffentlichen Nahverkehr gut erreichbar.
+            </p>
+            <ul style="list-style: none; padding: 0; margin: 0; line-height: 1.9; color: var(--text-muted);">
+              <li style="margin-bottom: 8px;">
+                <strong>Schwebebahn:</strong> Die Haltestelle <strong>„Völklinger Straße"</strong> liegt nur wenige
+                Gehminuten von unserem Zentrum entfernt.
+              </li>
+              <li style="margin-bottom: 8px;">
+                <strong>Bus:</strong> Die Buslinien <strong>600, 607 und 617</strong> halten in unmittelbarer Nähe an
+                der Haltestelle <strong>„Friedrich-Ebert-Straße"</strong>.
+              </li>
+              <li>
+                <strong>Bahnhof:</strong> Vom Hauptbahnhof Wuppertal erreichen Sie uns mit der Schwebebahn in Richtung
+                Vohwinkel in etwa 10 Minuten.
+              </li>
+            </ul>
+          </div>
+
+          <div class="about-content animate-in">
+            <h3 style="font-size: 1.5rem; color: var(--primary-color); margin-bottom: 16px;">Mit dem Auto</h3>
+            <p class="about-text">
+              Wenn Sie mit dem Auto anreisen, stehen Ihnen in der Umgebung der Friedrich-Ebert-Straße ausreichend
+              Parkmöglichkeiten zur Verfügung.
+            </p>
+            <ul style="list-style: none; padding: 0; margin: 0; line-height: 1.9; color: var(--text-muted);">
+              <li style="margin-bottom: 8px;">
+                <strong>Parkplätze:</strong> Direkt vor dem Gebäude sowie in den angrenzenden Seitenstraßen finden Sie
+                öffentliche Parkplätze.
+              </li>
+              <li style="margin-bottom: 8px;">
+                <strong>Parkhaus:</strong> Das Parkhaus <strong>„City-Arkaden"</strong> befindet sich in etwa 5
+                Gehminuten Entfernung.
+              </li>
+              <li>
+                <strong>Anfahrt über die A46:</strong> Nehmen Sie die Ausfahrt <strong>„Wuppertal-Elberfeld"</strong>
+                und folgen Sie der Beschilderung in Richtung Friedrich-Ebert-Straße.
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -152,24 +211,50 @@
     <section class="section">
       <div class="container">
         <div class="section-title-wrapper animate-in">
-          <span class="badge badge-accent">Gebetszeiten</span>
           <h2 class="section-title">Gebetszeiten nach dem Fazilet-Kalender</h2>
           <p class="section-subtitle">Wir richten unsere täglichen Gebetszeiten nach den astronomischen Berechnungen des Fazilet-Kalenders aus.</p>
         </div>
 
+
         <div
           style="background-color: var(--bg-white); border-radius: var(--border-radius-md); box-shadow: var(--shadow-md); border: 1px solid rgba(15, 23, 42, 0.05); padding: 40px; text-align: center; max-width: 800px; margin: 0 auto;">
-          <h3 style="color: var(--primary-color); font-size: 1.5rem; margin-bottom: 16px;">Tägliche Gebetszeiten abrufen</h3>
-          <p style="color: var(--text-muted); margin-bottom: 28px; line-height: 1.7;">
-            Die genauen Gebetszeiten für Wuppertal variieren täglich im Laufe des Jahres. Um stets die aktuellen
-            Uhrzeiten für das Morgengebet, das Mittagsgebet, das Nachmittagsgebet, das Abendgebet und das Nachtgebet zu
-            erfahren, empfehlen wir den Blick in den Fazilet-Kalender.
+          <h3 style="color: var(--primary-color); font-size: 1.5rem; margin-bottom: 8px;">Gebetszeiten für Wuppertal</h3>
+          <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 0.95rem;" id="prayerDate"></p>
+
+          <div id="prayerTimesWidget"
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; margin-bottom: 28px;">
+            <div style="background: var(--bg-light); border-radius: var(--border-radius-md); padding: 16px 8px;">
+              <div style="font-weight: 600; color: var(--primary-color); margin-bottom: 6px;">Morgengebet</div>
+              <div style="font-size: 1.25rem; font-weight: 700; color: var(--primary-dark);" id="prayerFajr">--:--</div>
+            </div>
+            <div style="background: var(--bg-light); border-radius: var(--border-radius-md); padding: 16px 8px;">
+              <div style="font-weight: 600; color: var(--primary-color); margin-bottom: 6px;">Mittagsgebet</div>
+              <div style="font-size: 1.25rem; font-weight: 700; color: var(--primary-dark);" id="prayerDhuhr">--:--</div>
+            </div>
+            <div style="background: var(--bg-light); border-radius: var(--border-radius-md); padding: 16px 8px;">
+              <div style="font-weight: 600; color: var(--primary-color); margin-bottom: 6px;">Nachmittagsgebet</div>
+              <div style="font-size: 1.25rem; font-weight: 700; color: var(--primary-dark);" id="prayerAsr">--:--</div>
+            </div>
+            <div style="background: var(--bg-light); border-radius: var(--border-radius-md); padding: 16px 8px;">
+              <div style="font-weight: 600; color: var(--primary-color); margin-bottom: 6px;">Abendgebet</div>
+              <div style="font-size: 1.25rem; font-weight: 700; color: var(--primary-dark);" id="prayerMaghrib">--:--</div>
+            </div>
+            <div style="background: var(--bg-light); border-radius: var(--border-radius-md); padding: 16px 8px;">
+              <div style="font-weight: 600; color: var(--primary-color); margin-bottom: 6px;">Nachtgebet</div>
+              <div style="font-size: 1.25rem; font-weight: 700; color: var(--primary-dark);" id="prayerIsha">--:--</div>
+            </div>
+          </div>
+
+          <p style="color: var(--text-muted); margin-bottom: 24px; line-height: 1.7; font-size: 0.9rem;">
+            Die Zeiten werden täglich automatisch für Wuppertal berechnet und dienen als Orientierung. Für die
+            verbindlichen Zeiten empfehlen wir den Blick in den Fazilet-Kalender.
           </p>
           <div>
             <a href="https://www.faziletcalendar.com" target="_blank" rel="noopener noreferrer"
               class="btn btn-primary">Offiziellen Fazilet Kalender aufrufen</a>
           </div>
         </div>
+
       </div>
     </section>
   </main>

@@ -155,12 +155,20 @@ document.addEventListener('DOMContentLoaded', () => {
       const email = document.getElementById('email').value.trim();
       const subject = document.getElementById('subject').value.trim();
       const message = document.getElementById('message').value.trim();
+      const privacyCheck = document.getElementById('privacyCheck');
 
       // Check fields
       if (!name || !email || !subject || !message) {
         showStatus('Bitte füllen Sie alle erforderlichen Felder aus.', 'error');
         return;
       }
+
+      // Check privacy checkbox
+      if (privacyCheck && !privacyCheck.checked) {
+        showStatus('Bitte bestätigen Sie die Datenschutzerklärung, um Ihre Nachricht zu senden.', 'error');
+        return;
+      }
+
 
       // Simulate sending animation
       const submitBtn = contactForm.querySelector('button[type="submit"]');
@@ -190,11 +198,58 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // --- Language Switch Alert ---
-  const langToggleBtn = document.getElementById('langToggle');
-  if (langToggleBtn) {
-    langToggleBtn.addEventListener('click', () => {
-      alert('Die türkische Übersetzung dieser Webseite befindet sich aktuell im Aufbau.\n\nTürkçe çevirimiz yakında hizmetinizde olacaktır.');
-    });
+  // --- Prayer Times Widget (Wuppertal) ---
+  const prayerDateEl = document.getElementById('prayerDate');
+  const prayerTimesWidget = document.getElementById('prayerTimesWidget');
+
+  if (prayerTimesWidget) {
+    const prayerEls = {
+      Fajr: document.getElementById('prayerFajr'),
+      Dhuhr: document.getElementById('prayerDhuhr'),
+      Asr: document.getElementById('prayerAsr'),
+      Maghrib: document.getElementById('prayerMaghrib'),
+      Isha: document.getElementById('prayerIsha')
+    };
+
+    // Wuppertal coordinates
+    const lat = 51.2562;
+    const lng = 7.1508;
+
+    const loadPrayerTimes = () => {
+      const today = new Date();
+      const dateStr = today.toISOString().slice(0, 10);
+
+      // Display today's date in German
+      if (prayerDateEl) {
+        prayerDateEl.textContent = 'Heute, ' + today.toLocaleDateString('de-DE', {
+          weekday: 'long',
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric'
+        });
+      }
+
+      fetch('https://api.aladhan.com/v1/timings/' + dateStr + '?latitude=' + lat + '&longitude=' + lng + '&method=3')
+        .then(response => response.json())
+        .then(data => {
+          const timings = data.data.timings;
+          prayerEls.Fajr.textContent = timings.Fajr;
+          prayerEls.Dhuhr.textContent = timings.Dhuhr;
+          prayerEls.Asr.textContent = timings.Asr;
+          prayerEls.Maghrib.textContent = timings.Maghrib;
+          prayerEls.Isha.textContent = timings.Isha;
+        })
+        .catch(() => {
+          // Fallback if API is unavailable
+          prayerEls.Fajr.textContent = '--:--';
+          prayerEls.Dhuhr.textContent = '--:--';
+          prayerEls.Asr.textContent = '--:--';
+          prayerEls.Maghrib.textContent = '--:--';
+          prayerEls.Isha.textContent = '--:--';
+        });
+    };
+
+    loadPrayerTimes();
   }
 });
+

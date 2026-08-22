@@ -1700,6 +1700,7 @@ body::before {
   color: #d4a84b;
   font-family: monospace;
   font-size: 1rem;
+  text-align: right;
 }
 
 .timeline-tracker {

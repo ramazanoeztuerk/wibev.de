@@ -565,8 +565,8 @@ body::before {
 
 .hero-frame {
   position: relative;
-  width: 380px;
-  height: 320px;
+  width: 300px;
+  height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1949,8 +1949,8 @@ body::before {
     height: 260px;
   }
   .hero-frame {
-    width: 300px;
-    height: 250px;
+    width: 260px;
+    height: 340px;
   }
 
   /* Header Adjustments */

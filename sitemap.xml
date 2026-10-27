@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://wibev.de/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://wibev.de/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://wibev.de/tr/"/>
+  </url>
+  <url>
+    <loc>https://wibev.de/tr/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://wibev.de/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://wibev.de/tr/"/>
+  </url>
+  <url>
+    <loc>https://wibev.de/ueber-uns.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://wibev.de/ueber-uns.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://wibev.de/tr/hakkimizda.html"/>
+  </url>
+  <url>
+    <loc>https://wibev.de/tr/hakkimizda.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://wibev.de/ueber-uns.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://wibev.de/tr/hakkimizda.html"/>
+  </url>
+  <url>
+    <loc>https://wibev.de/dienste.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://wibev.de/dienste.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://wibev.de/tr/hizmetler.html"/>
+  </url>
+  <url>
+    <loc>https://wibev.de/tr/hizmetler.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://wibev.de/dienste.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://wibev.de/tr/hizmetler.html"/>
+  </url>
+  <url>
+    <loc>https://wibev.de/projekte.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://wibev.de/projekte.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://wibev.de/tr/projeler.html"/>
+  </url>
+  <url>
+    <loc>https://wibev.de/tr/projeler.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://wibev.de/projekte.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://wibev.de/tr/projeler.html"/>
+  </url>
+  <url>
+    <loc>https://wibev.de/spenden.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://wibev.de/spenden.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://wibev.de/tr/bagis.html"/>
+  </url>
+  <url>
+    <loc>https://wibev.de/tr/bagis.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://wibev.de/spenden.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://wibev.de/tr/bagis.html"/>
+  </url>
+  <url>
+    <loc>https://wibev.de/kontakt.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://wibev.de/kontakt.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://wibev.de/tr/iletisim.html"/>
+  </url>
+  <url>
+    <loc>https://wibev.de/tr/iletisim.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://wibev.de/kontakt.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://wibev.de/tr/iletisim.html"/>
+  </url>
+</urlset>

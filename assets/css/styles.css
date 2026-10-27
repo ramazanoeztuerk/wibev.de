@@ -1899,6 +1899,7 @@ button, input, textarea, select {
 
 .bank-label { color: rgba(255, 255, 255, 0.55); font-weight: 500; }
 .bank-value { font-weight: 700; color: #f5d580; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 1rem; }
+.bank-value-note { font-family: inherit; font-weight: 600; }
 
 .timeline-tracker { display: flex; flex-direction: column; gap: 24px; }
 

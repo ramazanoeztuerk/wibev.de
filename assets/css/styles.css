@@ -1295,9 +1295,8 @@ button, input, textarea, select {
   }
 
   .oepnv-route-card-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
+    gap: 8px;
+    margin-bottom: 20px;
   }
 
   .oepnv-step-marker {
@@ -2074,14 +2073,19 @@ button, input, textarea, select {
   }
 
   .nav.active { left: 0; }
+
+  /* Logo passt in die niedrigere Kopfleiste */
+  .logo-img { height: 76px; }
+  .header-scrolled .logo-img { height: 60px; }
   .nav-link { font-size: 1.2rem; }
 
   /* Hero */
-  .hero { min-height: auto; padding: 120px 0 96px 0; }
+  .hero { min-height: auto; padding: 148px 0 72px 0; }
   .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 32px; }
   .hero-description { margin: 0 auto 32px auto; }
   .hero-buttons { justify-content: center; }
-  .hero-graphic { order: -1; }
+  .hero-graphic { display: none; }
+  .btn-outline-white { color: var(--primary-dark); border-color: var(--primary-dark); }
   .hero-frame { width: 220px; height: 320px; border-radius: 110px 110px 12px 12px; }
   .hero-frame-inner { border-radius: 104px 104px 8px 8px; }
   .hero-shape-bg { width: 260px; height: 260px; }

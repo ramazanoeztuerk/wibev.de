@@ -327,19 +327,19 @@
       if (netAssets <= 0) {
         resultVal.textContent = '0,00 EUR';
         statusText.innerHTML = isTurkish
-          ? 'Net mal varlığınız sıfırın altında. Zekat gerekmez.'
-          : 'Ihr steuerbares Nettovermögen beträgt weniger als Null. Es ist keine Zakat fällig.';
+          ? 'Net mal varlığınız sıfırın altında olduğundan zekat düşmez.'
+          : 'Ihr Nettovermögen liegt unter null. Es ist keine Zakat fällig.';
       } else if (netAssets < nisabThreshold) {
         resultVal.textContent = '0,00 EUR';
         statusText.innerHTML = isTurkish
-          ? `<strong>${fmt(netAssets)} EUR</strong> tutarındaki net mal varlığınız <strong>${fmt(nisabThreshold)} EUR</strong> nisab sınırının altında. Zekat gerekmez.`
+          ? `<strong>${fmt(netAssets)} EUR</strong> tutarındaki net mal varlığınız <strong>${fmt(nisabThreshold)} EUR</strong> nisap sınırının altında olduğundan zekat düşmez.`
           : `Ihr Nettovermögen von <strong>${fmt(netAssets)} EUR</strong> liegt unter der Nisab-Schwelle von <strong>${fmt(nisabThreshold)} EUR</strong>. Es ist keine Zakat fällig.`;
       } else {
         const zakatDue = netAssets * 0.025;
         resultVal.textContent = `${fmt(zakatDue)} EUR`;
         statusText.innerHTML = isTurkish
-          ? `<strong>${fmt(netAssets)} EUR</strong> tutarındaki net mal varlığınız <strong>${fmt(nisabThreshold)} EUR</strong> nisab sınırının üzerinde. Zekat, mal varlığınızın %2,5'idir.`
-          : `Ihr Nettovermögen von <strong>${fmt(netAssets)} EUR</strong> liegt über der Nisab-Schwelle von <strong>${fmt(nisabThreshold)} EUR</strong>. Die Zakat beträgt 2,5 % Ihres Vermögens.`;
+          ? `<strong>${fmt(netAssets)} EUR</strong> tutarındaki net mal varlığınız <strong>${fmt(nisabThreshold)} EUR</strong> nisap sınırının üzerindedir. Zekatınız, mal varlığınızın %2,5'idir. Allah zekatınızı kabul etsin.`
+          : `Ihr Nettovermögen von <strong>${fmt(netAssets)} EUR</strong> liegt über der Nisab-Schwelle von <strong>${fmt(nisabThreshold)} EUR</strong>. Die Zakat beträgt 2,5 % Ihres Vermögens. Möge Allah Ihre Zakat annehmen.`;
       }
     });
   }

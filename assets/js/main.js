@@ -1,6 +1,7 @@
 /**
  * Wuppertaler Integrations- und Bildungsverein e.V. (WIB)
- * Enhanced JavaScript – Scroll Reveal, Parallax, Particles, Ripple
+ * JavaScript – Navigation, Einblenden, Parallax, Formulare
+ * Übergänge und Tipp-Feedback: motion.js / motion.css
  */
 (function () {
   'use strict';
@@ -14,8 +15,6 @@
     initScrollTop();
     initScrollReveal();
     initHeroParallax();
-    initHeroParticles();
-    initButtonRipple();
     initLinkSmoothScroll();
     initZakatCalculator();
     initContactForm();
@@ -96,37 +95,46 @@
      SCROLL REVEAL (Intersection Observer)
      ═══════════════════════════════════════════════════════════════════════ */
   function initScrollReveal() {
-    // Add .reveal to sections, cards, etc. that don't have it yet
     const revealTargets = document.querySelectorAll(
-      '.section, .service-card, .post-card, .project-card-large, .book-card, ' +
+      '.section-title-wrapper, .post-card, .project-card-large, .book-card, ' +
       '.contact-card, .gallery-item, .about-content, .about-info-box, ' +
       '.zakat-calc-container, .bank-details-box, .timeline-step, .legal-content'
     );
+    const grids = document.querySelectorAll('.services-grid');
+    if (reduceMotion || !('IntersectionObserver' in window)) return;
 
-    revealTargets.forEach(el => {
-      if (!el.classList.contains('reveal')) el.classList.add('reveal');
-    });
-
-    // Stagger children for service grids
-    document.querySelectorAll('.services-grid').forEach(grid => {
-      grid.classList.add('reveal-stagger');
-    });
+    // Klassen nach dem Einblenden wieder entfernen, damit Hover-Übergänge greifen
+    const settle = (el, cls, ms) => {
+      setTimeout(() => el.classList.remove(cls, 'visible'), ms);
+    };
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          // Once revealed, stop observing
-          observer.unobserve(entry.target);
-        }
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        el.classList.add('visible');
+        if (el.classList.contains('reveal-stagger')) settle(el, 'reveal-stagger', 1600);
+        else settle(el, 'reveal', 1000);
+        observer.unobserve(el);
       });
     }, {
       threshold: 0.12,
       rootMargin: '0px 0px -40px 0px'
     });
 
-    document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => {
+    // Was beim Laden schon zu sehen ist, wird nicht nachträglich eingeblendet
+    const belowFold = (el) => el.getBoundingClientRect().top > window.innerHeight * 0.92;
+
+    revealTargets.forEach(el => {
+      if (el.closest('.services-grid') || !belowFold(el)) return;
+      el.classList.add('reveal');
       observer.observe(el);
+    });
+
+    grids.forEach(grid => {
+      if (!belowFold(grid)) return;
+      grid.classList.add('reveal-stagger');
+      observer.observe(grid);
     });
   }
 
@@ -159,122 +167,6 @@
       }
     `;
     document.head.appendChild(style);
-  }
-
-  /* ═══════════════════════════════════════════════════════════════════════
-     HERO PARTICLES (Canvas)
-     ═══════════════════════════════════════════════════════════════════════ */
-  function initHeroParticles() {
-    const hero = document.querySelector('.hero');
-    if (!hero || reduceMotion) return;
-
-    // Create canvas
-    const canvas = document.createElement('canvas');
-    canvas.id = 'heroParticles';
-    hero.appendChild(canvas);
-
-    const ctx = canvas.getContext('2d');
-    let particles = [];
-    let animId;
-
-    const resize = () => {
-      const rect = hero.getBoundingClientRect();
-      canvas.width = rect.width;
-      canvas.height = rect.height;
-    };
-
-    const createParticles = () => {
-      const count = Math.min(60, Math.floor((canvas.width * canvas.height) / 15000));
-      particles = [];
-      for (let i = 0; i < count; i++) {
-        particles.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          r: Math.random() * 2 + 0.8,
-          vx: (Math.random() - 0.5) * 0.4,
-          vy: (Math.random() - 0.5) * 0.4,
-          alpha: Math.random() * 0.5 + 0.15
-        });
-      }
-    };
-
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      particles.forEach(p => {
-        p.x += p.vx;
-        p.y += p.vy;
-
-        // Wrap around edges
-        if (p.x < 0) p.x = canvas.width;
-        if (p.x > canvas.width) p.x = 0;
-        if (p.y < 0) p.y = canvas.height;
-        if (p.y > canvas.height) p.y = 0;
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(201, 160, 58, ${p.alpha})`;
-        ctx.fill();
-      });
-
-      // Draw connections
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-
-          if (dist < 120) {
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(201, 160, 58, ${0.06 * (1 - dist / 120)})`;
-            ctx.lineWidth = 0.6;
-            ctx.stroke();
-          }
-        }
-      }
-
-      animId = requestAnimationFrame(animate);
-    };
-
-    resize();
-    createParticles();
-    animate();
-
-    window.addEventListener('resize', () => {
-      resize();
-      createParticles();
-    });
-  }
-
-  /* ═══════════════════════════════════════════════════════════════════════
-     BUTTON RIPPLE EFFECT
-     ═══════════════════════════════════════════════════════════════════════ */
-  function initButtonRipple() {
-    document.addEventListener('click', (e) => {
-      const btn = e.target.closest('.btn');
-      if (!btn) return;
-
-      // Remove old ripples
-      const oldRipple = btn.querySelector('.ripple');
-      if (oldRipple) oldRipple.remove();
-
-      const ripple = document.createElement('span');
-      ripple.className = 'ripple';
-
-      const rect = btn.getBoundingClientRect();
-      const size = Math.max(rect.width, rect.height);
-      ripple.style.width = ripple.style.height = `${size}px`;
-
-      ripple.style.left = `${e.clientX - rect.left - size / 2}px`;
-      ripple.style.top = `${e.clientY - rect.top - size / 2}px`;
-
-      btn.appendChild(ripple);
-
-      // Clean up after animation
-      ripple.addEventListener('animationend', () => ripple.remove());
-    });
   }
 
   /* ═══════════════════════════════════════════════════════════════════════

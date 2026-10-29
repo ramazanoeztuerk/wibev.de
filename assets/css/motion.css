@@ -1,0 +1,302 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   BEWEGUNG – Seitenübergänge, Tipp-Feedback, Menü, Einblenden
+   Im Ruhezustand bewegt sich nichts. Bewegung gibt es nur als Antwort
+   auf eine Aktion: Seite wechseln, tippen, Menü öffnen, scrollen.
+   Wird nach styles.css geladen und überschreibt dort die Übergänge.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* Federkurven (gedämpfte Feder, wie bei iOS und One UI) */
+  --spring: cubic-bezier(0.22, 1, 0.36, 1);
+  --spring-bounce: cubic-bezier(0.34, 1.4, 0.64, 1);
+  --spring-smooth: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+  --press-scale: 0.96;
+}
+
+@supports (transition-timing-function: linear(0, 1)) {
+  :root {
+    /* Dämpfung 0,8: kaum sichtbares Nachfedern (1,5 %) */
+    --spring: linear(0, 0.0515, 0.1701, 0.3157, 0.4629, 0.5972, 0.7114, 0.8036, 0.8745, 0.9266, 0.9632, 0.9874, 1.0024, 1.0107, 1.0144, 1.0151, 1.0141, 1.0122, 1.01, 1.0078, 1.0058, 1.0041, 1.0028, 1.0018, 1);
+    /* Dämpfung 0,65: spürbares, aber kurzes Nachfedern beim Loslassen */
+    --spring-bounce: linear(0, 0.0511, 0.1738, 0.3307, 0.4945, 0.6471, 0.7781, 0.8828, 0.9608, 1.0143, 1.0471, 1.0636, 1.0681, 1.0645, 1.056, 1.0453, 1.0342, 1.0238, 1.0149, 1.0078, 1.0026, 0.999, 0.9968, 0.9957, 0.9954, 0.9956, 0.9962, 0.9969, 0.9977, 0.9984, 1);
+    /* Kritisch gedämpft: weich, ohne Überschwingen */
+    --spring-smooth: linear(0, 0.0788, 0.2359, 0.4028, 0.5507, 0.6708, 0.7636, 0.8327, 0.883, 0.919, 0.9444, 0.9621, 0.9743, 0.9826, 0.9883, 0.9922, 0.9948, 0.9965, 0.9977, 0.9985, 1);
+  }
+}
+
+/* ── Ruhezustand: keine Dauerschleifen ── */
+.hero-title span,
+.hero-shape-bg,
+.hero-frame-icon,
+.service-card:hover::after {
+  animation: none;
+}
+
+/* Auf Touch-Geräten keine "klebenden" Hover-Zustände nach dem Tippen */
+@media (hover: none) {
+  .btn:hover,
+  .lang-toggle:hover,
+  .scroll-top-btn.visible:hover,
+  .service-card:hover,
+  .project-card-large:hover,
+  .contact-card:hover {
+    transform: none;
+  }
+  .gallery-item:hover .gallery-img,
+  .project-card-large:hover .project-image-pane img,
+  .book-card:hover .book-image-pane img {
+    transform: none;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SEITENÜBERGÄNGE (View Transitions zwischen Dokumenten)
+   ═══════════════════════════════════════════════════════════════════════════ */
+@view-transition {
+  navigation: auto;
+}
+
+/* Kopfleiste bleibt stehen, nur der Inhalt wechselt */
+.header { view-transition-name: site-header; }
+.scroll-top-btn { view-transition-name: scroll-top; }
+
+::view-transition-group(site-header) {
+  animation-duration: 0.5s;
+  animation-timing-function: var(--spring-smooth);
+}
+
+::view-transition-old(root) {
+  animation: vt-fade-out 0.22s var(--ease-exit) both;
+}
+::view-transition-new(root) {
+  animation: vt-rise-in 0.55s var(--spring-smooth) both;
+}
+
+/* Vorwärts (weiter rechts im Menü): neue Seite schiebt sich von rechts herein */
+html:active-view-transition-type(forward)::view-transition-old(root) {
+  animation: vt-push-out 0.42s var(--spring-smooth) both;
+}
+html:active-view-transition-type(forward)::view-transition-new(root) {
+  animation: vt-push-in 0.5s var(--spring-smooth) both;
+}
+
+/* Zurück: umgekehrt */
+html:active-view-transition-type(back)::view-transition-old(root) {
+  animation: vt-pop-out 0.42s var(--spring-smooth) both;
+}
+html:active-view-transition-type(back)::view-transition-new(root) {
+  animation: vt-pop-in 0.5s var(--spring-smooth) both;
+}
+
+/* Sprache wechseln: nur weich überblenden */
+html:active-view-transition-type(lang)::view-transition-old(root) {
+  animation: vt-fade-out 0.3s ease both;
+}
+html:active-view-transition-type(lang)::view-transition-new(root) {
+  animation: vt-fade-in 0.4s ease both;
+}
+
+@keyframes vt-fade-out { to { opacity: 0; } }
+@keyframes vt-fade-in { from { opacity: 0; } }
+@keyframes vt-rise-in {
+  from { opacity: 0; transform: translateY(14px) scale(0.995); }
+}
+@keyframes vt-push-out {
+  to { opacity: 0; transform: translateX(-6%) scale(0.98); }
+}
+@keyframes vt-push-in {
+  from { opacity: 0; transform: translateX(10%); }
+}
+@keyframes vt-pop-out {
+  to { opacity: 0; transform: translateX(8%); }
+}
+@keyframes vt-pop-in {
+  from { opacity: 0; transform: translateX(-6%) scale(0.98); }
+}
+
+/* Ersatz für Browser ohne View Transitions (z. B. Firefox) */
+.page-fade main {
+  animation: page-in 0.5s var(--spring-smooth) both;
+}
+.page-leaving main {
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.17s var(--ease-exit), transform 0.17s var(--ease-exit);
+}
+@keyframes page-in {
+  from { opacity: 0; transform: translateY(10px); }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TIPP-FEEDBACK – Buttons und Bedienelemente geben beim Drücken nach
+   ═══════════════════════════════════════════════════════════════════════════ */
+a, button, input, select, textarea, label {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn,
+.lang-toggle,
+.scroll-top-btn,
+.map-consent-btn,
+.nav-toggle {
+  transition:
+    transform 0.55s var(--spring-bounce),
+    box-shadow 0.35s var(--spring-smooth),
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    opacity 0.35s ease,
+    visibility 0.35s;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Heller Schimmer beim Drücken (statt Material-Welle) */
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: currentColor;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.btn:active::after {
+  opacity: 0.1;
+  transition-duration: 0.06s;
+}
+
+.btn:active,
+.lang-toggle:active,
+.map-consent-btn:active {
+  transform: scale(var(--press-scale));
+  transition-duration: 0.12s;
+  transition-timing-function: ease-out;
+}
+
+.scroll-top-btn.visible:active {
+  transform: scale(0.9);
+  transition-duration: 0.12s;
+  transition-timing-function: ease-out;
+}
+
+.nav-toggle:active { transform: scale(0.88); transition-duration: 0.12s; }
+
+/* Klickbare Karten geben leicht nach */
+.contact-card,
+.post-card,
+.service-card,
+.project-card-large,
+.gallery-item {
+  transition:
+    transform 0.6s var(--spring),
+    box-shadow 0.4s var(--spring-smooth),
+    border-color 0.3s ease;
+}
+
+a.contact-card:active,
+a.post-card:active,
+a.service-card:active,
+.service-card a:active,
+.gallery-item:active {
+  transform: scale(0.985);
+  transition-duration: 0.15s;
+}
+
+/* Hamburger → Kreuz, sauber mittig und mit Feder */
+.nav-toggle span {
+  transition:
+    transform 0.5s var(--spring),
+    opacity 0.2s ease;
+}
+.nav-toggle.active span:nth-child(1) { transform: translateY(8.75px) rotate(45deg); }
+.nav-toggle.active span:nth-child(2) { opacity: 0; transform: scaleX(0.2); }
+.nav-toggle.active span:nth-child(3) { transform: translateY(-8.75px) rotate(-45deg); }
+
+/* Nach oben-Button erscheint mit Feder */
+.scroll-top-btn {
+  transform: translateY(16px) scale(0.6);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MOBILES MENÜ – gleitet weich herein, Einträge folgen gestaffelt
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .nav {
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px) scale(0.985);
+    transform-origin: top center;
+    transition:
+      opacity 0.2s ease,
+      transform 0.25s var(--ease-exit),
+      visibility 0s linear 0.25s;
+  }
+
+  .nav.active {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition:
+      opacity 0.3s ease,
+      transform 0.6s var(--spring),
+      visibility 0s;
+  }
+
+  .nav > * {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.15s ease, transform 0.2s ease;
+  }
+
+  .nav.active > * {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 0.35s ease var(--stagger, 0ms),
+      transform 0.7s var(--spring) var(--stagger, 0ms),
+      color 0.25s ease,
+      background-color 0.25s ease;
+  }
+
+  .nav.active > *:nth-child(1) { --stagger: 40ms; }
+  .nav.active > *:nth-child(2) { --stagger: 75ms; }
+  .nav.active > *:nth-child(3) { --stagger: 110ms; }
+  .nav.active > *:nth-child(4) { --stagger: 145ms; }
+  .nav.active > *:nth-child(5) { --stagger: 180ms; }
+  .nav.active > *:nth-child(6) { --stagger: 215ms; }
+  .nav.active > *:nth-child(7) { --stagger: 250ms; }
+  .nav.active > *:nth-child(8) { --stagger: 285ms; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   EINBLENDEN BEIM SCROLLEN – dezent und nur einmal
+   ═══════════════════════════════════════════════════════════════════════════ */
+.reveal,
+.reveal-stagger > * {
+  transform: translateY(18px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.9s var(--spring-smooth);
+}
+
+.reveal.visible,
+.reveal-stagger.visible > * {
+  transform: none;
+}
+
+/* Sobald eingeblendet, entfernt main.js die Klassen wieder,
+   damit Hover- und Tipp-Übergänge ungestört bleiben. */
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   BEWEGUNG REDUZIEREN
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  @view-transition { navigation: none; }
+  .reveal, .reveal-stagger > * { opacity: 1 !important; transform: none !important; }
+  .page-fade main { animation: none; }
+}

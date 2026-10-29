@@ -147,11 +147,6 @@
         const yOffset = scrollY * speed;
         hero.style.setProperty('--parallax-y', `${yOffset}px`);
 
-        // Also shift hero content slightly for depth
-        const content = hero.querySelector('.hero-content');
-        const graphic = hero.querySelector('.hero-graphic');
-        if (content) content.style.transform = `translateY(${scrollY * 0.08}px)`;
-        if (graphic) graphic.style.transform = `translateY(${scrollY * 0.15}px)`;
       }
     }, { passive: true });
 

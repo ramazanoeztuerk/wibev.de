@@ -406,6 +406,7 @@ button, input, textarea, select {
 .nav-link {
   font-size: 0.93rem;
   font-weight: 500;
+  white-space: nowrap;
   color: var(--text-dark);
   position: relative;
   padding: 6px 0;
@@ -491,9 +492,11 @@ button, input, textarea, select {
   min-height: 100vh;
   margin-top: 0;
   padding-top: var(--header-height);
+  padding-bottom: 64px;
   display: flex;
   align-items: center;
   overflow: hidden;
+  border-bottom: 4px solid var(--accent-color);
   background: radial-gradient(ellipse at 20% 30%, rgba(58, 39, 31, 0.97) 0%, #1a0f08 100%);
   color: var(--text-white);
 }
@@ -519,9 +522,9 @@ button, input, textarea, select {
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(26, 15, 8, 0.4) 0%,
-    rgba(26, 15, 8, 0.2) 40%,
-    var(--bg-warm) 100%
+    rgba(26, 15, 8, 0.45) 0%,
+    rgba(26, 15, 8, 0.25) 50%,
+    rgba(26, 15, 8, 0.6) 100%
   );
   pointer-events: none;
   z-index: 1;
@@ -2085,7 +2088,6 @@ button, input, textarea, select {
   .hero-description { margin: 0 auto 32px auto; }
   .hero-buttons { justify-content: center; }
   .hero-graphic { display: none; }
-  .btn-outline-white { color: var(--primary-dark); border-color: var(--primary-dark); }
   .hero-frame { width: 220px; height: 320px; border-radius: 110px 110px 12px 12px; }
   .hero-frame-inner { border-radius: 104px 104px 8px 8px; }
   .hero-shape-bg { width: 260px; height: 260px; }

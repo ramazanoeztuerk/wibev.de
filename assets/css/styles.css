@@ -546,33 +546,6 @@ button, input, textarea, select {
 
 .hero-content { position: relative; }
 
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  padding: 8px 20px;
-  border-radius: var(--radius-full);
-  font-size: 0.82rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  margin-bottom: 28px;
-  color: var(--text-white);
-}
-
-.badge-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--accent-color);
-  box-shadow: 0 0 12px var(--accent-glow);
-  animation: pulseGlow 2s infinite;
-}
-
 .hero-title {
   font-size: clamp(2.6rem, 5vw, 4rem);
   font-weight: 900;

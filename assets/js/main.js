@@ -18,11 +18,12 @@
     initButtonRipple();
     initLinkSmoothScroll();
     initZakatCalculator();
-    initNewsFilter();
     initContactForm();
-    initLangToggle();
-    initOepnvTabs();
+    initMapConsent();
   });
+
+  const isTurkish = document.documentElement.lang === 'tr';
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ═══════════════════════════════════════════════════════════════════════
      HEADER SCROLL
@@ -55,12 +56,14 @@
     if (!toggle || !menu) return;
 
     const closeMenu = () => {
+      toggle.setAttribute('aria-expanded', 'false');
       toggle.classList.remove('active');
       menu.classList.remove('active');
       document.body.classList.remove('overflow-hidden');
     };
 
     const openMenu = () => {
+      toggle.setAttribute('aria-expanded', 'true');
       toggle.classList.add('active');
       menu.classList.add('active');
       document.body.classList.add('overflow-hidden');
@@ -85,7 +88,7 @@
     const btn = document.querySelector('.scroll-top-btn');
     if (!btn) return;
     btn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
     });
   }
 
@@ -132,7 +135,7 @@
      ═══════════════════════════════════════════════════════════════════════ */
   function initHeroParallax() {
     const hero = document.querySelector('.hero');
-    if (!hero) return;
+    if (!hero || reduceMotion) return;
 
     window.addEventListener('scroll', () => {
       const scrollY = window.scrollY;
@@ -168,7 +171,7 @@
      ═══════════════════════════════════════════════════════════════════════ */
   function initHeroParticles() {
     const hero = document.querySelector('.hero');
-    if (!hero) return;
+    if (!hero || reduceMotion) return;
 
     // Create canvas
     const canvas = document.createElement('canvas');
@@ -289,7 +292,7 @@
       const target = document.querySelector(link.getAttribute('href'));
       if (target) {
         e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth' });
+        target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
       }
     });
   }
@@ -323,47 +326,21 @@
 
       if (netAssets <= 0) {
         resultVal.textContent = '0,00 EUR';
-        statusText.innerHTML = 'Ihr steuerbares Nettovermögen beträgt weniger als Null. Es ist keine Zakat fällig.';
+        statusText.innerHTML = isTurkish
+          ? 'Net mal varlığınız sıfırın altında. Zekat gerekmez.'
+          : 'Ihr steuerbares Nettovermögen beträgt weniger als Null. Es ist keine Zakat fällig.';
       } else if (netAssets < nisabThreshold) {
         resultVal.textContent = '0,00 EUR';
-        statusText.innerHTML = `Ihr Nettovermögen von <strong>${fmt(netAssets)} EUR</strong> liegt unter der Nisab-Schwelle von <strong>${fmt(nisabThreshold)} EUR</strong>. Es ist keine Zakat fällig.`;
+        statusText.innerHTML = isTurkish
+          ? `<strong>${fmt(netAssets)} EUR</strong> tutarındaki net mal varlığınız <strong>${fmt(nisabThreshold)} EUR</strong> nisab sınırının altında. Zekat gerekmez.`
+          : `Ihr Nettovermögen von <strong>${fmt(netAssets)} EUR</strong> liegt unter der Nisab-Schwelle von <strong>${fmt(nisabThreshold)} EUR</strong>. Es ist keine Zakat fällig.`;
       } else {
         const zakatDue = netAssets * 0.025;
         resultVal.textContent = `${fmt(zakatDue)} EUR`;
-        statusText.innerHTML = `Ihr Nettovermögen von <strong>${fmt(netAssets)} EUR</strong> liegt über der Nisab-Schwelle von <strong>${fmt(nisabThreshold)} EUR</strong>. Die Zakat beträgt 2,5 % Ihres Vermögens.`;
+        statusText.innerHTML = isTurkish
+          ? `<strong>${fmt(netAssets)} EUR</strong> tutarındaki net mal varlığınız <strong>${fmt(nisabThreshold)} EUR</strong> nisab sınırının üzerinde. Zekat, mal varlığınızın %2,5'idir.`
+          : `Ihr Nettovermögen von <strong>${fmt(netAssets)} EUR</strong> liegt über der Nisab-Schwelle von <strong>${fmt(nisabThreshold)} EUR</strong>. Die Zakat beträgt 2,5 % Ihres Vermögens.`;
       }
-    });
-  }
-
-  /* ═══════════════════════════════════════════════════════════════════════
-     NEWS FILTER
-     ═══════════════════════════════════════════════════════════════════════ */
-  function initNewsFilter() {
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const postCards = document.querySelectorAll('.post-card');
-    if (!filterBtns.length) return;
-
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        const filter = btn.getAttribute('data-filter');
-
-        postCards.forEach(card => {
-          const cat = card.getAttribute('data-category');
-          if (filter === 'all' || cat === filter) {
-            card.style.display = 'grid';
-            card.offsetHeight; // force reflow
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-          } else {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(12px)';
-            setTimeout(() => { card.style.display = 'none'; }, 300);
-          }
-        });
-      });
     });
   }
 
@@ -375,12 +352,21 @@
     const statusEl = document.getElementById('formStatus');
     if (!form) return;
 
+    const recipient = form.dataset.recipient || 'info@wib-wuppertal.de';
+    const texts = isTurkish ? {
+      missing: 'Lütfen tüm zorunlu alanları doldurun.',
+      opened: 'E-posta programınız açılıyor. Mesajı göndermek için orada "Gönder"e tıklayın. Program açılmazsa bize doğrudan ' + recipient + ' adresine yazabilirsiniz.',
+      from: 'Gönderen'
+    } : {
+      missing: 'Bitte füllen Sie alle erforderlichen Felder aus.',
+      opened: 'Ihr E-Mail-Programm wird geöffnet. Bitte senden Sie die vorbereitete Nachricht dort ab. Falls sich kein Programm öffnet, schreiben Sie uns direkt an ' + recipient + '.',
+      from: 'Absender'
+    };
+
     const showStatus = (msg, type) => {
       statusEl.textContent = msg;
       statusEl.className = `form-status ${type}`;
-      if (type === 'success') {
-        setTimeout(() => { statusEl.style.display = 'none'; }, 8000);
-      }
+      statusEl.style.display = '';
     };
 
     form.addEventListener('submit', (e) => {
@@ -392,83 +378,32 @@
       const message = document.getElementById('message')?.value.trim();
 
       if (!name || !email || !subject || !message) {
-        showStatus('Bitte füllen Sie alle erforderlichen Felder aus.', 'error');
+        showStatus(texts.missing, 'error');
         return;
       }
 
-      const submitBtn = form.querySelector('button[type="submit"]');
-      const orig = submitBtn.innerHTML;
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = 'Wird gesendet...';
-
-      setTimeout(() => {
-        submitBtn.innerHTML = orig;
-        submitBtn.disabled = false;
-        showStatus('Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet. Wir werden uns in Kürze mit Ihnen in Verbindung setzen.', 'success');
-        form.reset();
-      }, 1500);
+      // Kein Server vorhanden: Nachricht wird im E-Mail-Programm des Besuchers vorbereitet
+      const body = `${message}\n\n${texts.from}: ${name} <${email}>`;
+      window.location.href = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      showStatus(texts.opened, 'success');
     });
   }
 
   /* ═══════════════════════════════════════════════════════════════════════
-     ÖPNV TABS
+     GOOGLE MAPS – erst nach Klick laden (Datenschutz)
      ═══════════════════════════════════════════════════════════════════════ */
-  function initOepnvTabs() {
-    const tabs = document.querySelectorAll('.oepnv-tab');
-    const panels = document.querySelectorAll('.oepnv-panel');
-    if (!tabs.length) return;
-
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        const target = tab.getAttribute('data-tab');
-
-        tabs.forEach(t => {
-          t.classList.remove('active');
-          t.setAttribute('aria-selected', 'false');
-        });
-        tab.classList.add('active');
-        tab.setAttribute('aria-selected', 'true');
-
-        panels.forEach(p => {
-          p.classList.remove('active');
-          if (p.getAttribute('data-panel') === target) {
-            p.classList.add('active');
-          }
-        });
+  function initMapConsent() {
+    document.querySelectorAll('.map-consent-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const container = btn.closest('.map-container');
+        const iframe = document.createElement('iframe');
+        iframe.title = container.dataset.title;
+        iframe.src = container.dataset.src;
+        iframe.loading = 'lazy';
+        iframe.referrerPolicy = 'no-referrer-when-downgrade';
+        iframe.allowFullscreen = true;
+        container.replaceChildren(iframe);
       });
-    });
-
-    // Keyboard navigation
-    const tabNav = document.querySelector('.oepnv-tab-nav');
-    if (tabNav) {
-      tabNav.addEventListener('keydown', (e) => {
-        const current = document.activeElement;
-        if (!current.classList.contains('oepnv-tab')) return;
-
-        let index = Array.from(tabs).indexOf(current);
-        if (e.key === 'ArrowRight') {
-          e.preventDefault();
-          index = (index + 1) % tabs.length;
-          tabs[index].focus();
-          tabs[index].click();
-        } else if (e.key === 'ArrowLeft') {
-          e.preventDefault();
-          index = (index - 1 + tabs.length) % tabs.length;
-          tabs[index].focus();
-          tabs[index].click();
-        }
-      });
-    }
-  }
-
-  /* ═══════════════════════════════════════════════════════════════════════
-     LANGUAGE TOGGLE
-     ═══════════════════════════════════════════════════════════════════════ */
-  function initLangToggle() {
-    const btn = document.getElementById('langToggle');
-    if (!btn) return;
-    btn.addEventListener('click', () => {
-      alert('Die türkische Übersetzung dieser Webseite befindet sich aktuell im Aufbau.\n\nTürkçe çevirimiz yakında hizmetinizde olacaktır.');
     });
   }
 

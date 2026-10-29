@@ -9,8 +9,19 @@
     content="Wuppertal Entegrasyon ve Eğitim Derneği ile iletişime geçin. Ulaşım, iletişim formu ve Fazilet namaz vakitleri takvimi.">
   <title>İletişim ve Ulaşım | Wuppertal Entegrasyon ve Eğitim Derneği</title>
 
-  <link rel="icon" type="image/svg+xml"
-    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%230c432c'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32.png">
+  <link rel="apple-touch-icon" href="../assets/images/favicon-180.png">
+  <link rel="canonical" href="https://wibev.de/tr/iletisim.html">
+  <link rel="alternate" hreflang="de" href="https://wibev.de/kontakt.html">
+  <link rel="alternate" hreflang="tr" href="https://wibev.de/tr/iletisim.html">
+  <link rel="alternate" hreflang="x-default" href="https://wibev.de/kontakt.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Wuppertal Entegrasyon ve Eğitim Derneği">
+  <meta property="og:title" content="İletişim ve Ulaşım | Wuppertal Entegrasyon ve Eğitim Derneği">
+  <meta property="og:description" content="Wuppertal Entegrasyon ve Eğitim Derneği ile iletişime geçin. Ulaşım, iletişim formu ve Fazilet namaz vakitleri takvimi.">
+  <meta property="og:url" content="https://wibev.de/tr/iletisim.html">
+  <meta property="og:image" content="https://wibev.de/assets/images/logo.jpg">
+  <meta property="og:locale" content="tr_TR">
   <link rel="stylesheet" href="../assets/css/styles.css">
 </head>
 
@@ -42,11 +53,11 @@
         </button>
       </nav>
 
-      <div class="nav-toggle" id="navToggle" aria-label="Menüyü aç veya kapat">
+      <button type="button" class="nav-toggle" id="navToggle" aria-label="Menüyü aç veya kapat" aria-expanded="false" aria-controls="navMenu">
         <span></span>
         <span></span>
         <span></span>
-      </div>
+      </button>
     </div>
   </header>
 
@@ -87,7 +98,7 @@
             <div class="contact-card">
               <div class="contact-card-details">
                 <h4 style="color: var(--primary-color);">Telefon</h4>
-                <p><a href="tel:+49202309120" style="color: var(--text-muted); hover: var(--primary-color);">0202 30 91
+                <p><a href="tel:+49202309120" style="color: var(--text-muted);">0202 30 91
                     20</a></p>
               </div>
             </div>
@@ -96,16 +107,16 @@
               <div class="contact-card-details">
                 <h4 style="color: var(--primary-color);">E-Posta</h4>
                 <p><a href="mailto:info@wib-wuppertal.de"
-                    style="color: var(--text-muted); hover: var(--primary-color);">info@wib-wuppertal.de</a></p>
+                    style="color: var(--text-muted);">info@wib-wuppertal.de</a></p>
               </div>
             </div>
 
             <!-- Map Container -->
-            <div class="map-container" style="margin-top: 16px;">
-              <iframe title="Friedrich-Ebert-Str. 175 konum haritası"
-                src="https://maps.google.com/maps?q=Friedrich-Ebert-Stra%C3%9Fe%20175%2C%2042117%20Wuppertal&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-              </iframe>
+            <div class="map-container map-consent" style="margin-top: 16px;" data-title="Friedrich-Ebert-Str. 175 konum haritası"
+              data-src="https://maps.google.com/maps?q=Friedrich-Ebert-Stra%C3%9Fe%20175%2C%2042117%20Wuppertal&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=&amp;output=embed">
+              <p>Harita yüklendiğinde verileriniz Google'a aktarılır. Ayrıntılar için <a href="gizlilik.html">Gizlilik Politikamıza</a> bakın.</p>
+              <button type="button" class="btn btn-primary map-consent-btn">Haritayı yükle</button>
+              <a href="https://www.google.com/maps/search/?api=1&amp;query=Friedrich-Ebert-Stra%C3%9Fe%20175%2C%2042117%20Wuppertal" target="_blank" rel="noopener noreferrer">Google Haritalar'da aç</a>
             </div>
           </div>
 
@@ -256,7 +267,7 @@
         </div>
 
         <div class="footer-contact">
-          <h4>Sicil</h4>
+          <h4>İletişim</h4>
           <ul class="footer-contact-list">
             <li class="footer-contact-item">
               <span>Friedrich-Ebert-Straße 175, 42117 Wuppertal</span>
@@ -266,6 +277,9 @@
             </li>
             <li class="footer-contact-item">
               <span>Sicil Mahkemesi Wuppertal Sicil Numarası VR 4057</span>
+            </li>
+            <li class="footer-contact-item">
+              <span>E-Posta: <a href="mailto:info@wib-wuppertal.de" class="footer-link">info@wib-wuppertal.de</a></span>
             </li>
           </ul>
         </div>

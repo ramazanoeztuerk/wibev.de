@@ -22,9 +22,9 @@
   <meta property="og:url" content="https://wibev.de/">
   <meta property="og:image" content="https://wibev.de/assets/images/logo.jpg">
   <meta property="og:locale" content="de_DE">
-  <link rel="stylesheet" href="assets/css/styles.css?v=20261102">
-  <link rel="stylesheet" href="assets/css/motion.css?v=20261102">
-  <script src="assets/js/motion.js?v=20261102"></script>
+  <link rel="stylesheet" href="assets/css/styles.css?v=2026110203">
+  <link rel="stylesheet" href="assets/css/motion.css?v=2026110203">
+  <script src="assets/js/motion.js?v=2026110203"></script>
 </head>
 
 <body>
@@ -65,51 +65,81 @@
   </header>
 
   <main>
-    <section class="hero" id="home">
-      <div class="container">
-        <div class="hero-grid">
-          <div class="hero-content">
-            <p class="hero-eyebrow">Moscheegemeinde in Wuppertal-Elberfeld seit den 1970er Jahren</p>
-            <h1 class="hero-title">Wuppertaler Integrations- und Bildungsverein e.V.</h1>
-            <p class="hero-description">
-              Gebet, Unterricht für Kinder und Begegnung unter einem Dach. Alle sind herzlich willkommen.
-            </p>
-            <div class="hero-buttons">
-              <a href="ueber-uns.html" class="btn btn-accent" id="heroBtnAbout">Über uns</a>
-              <a href="kontakt.html" class="btn btn-outline" id="heroBtnContact">Anfahrt</a>
-            </div>
-          </div>
-          <figure class="hero-photo">
-            <img src="assets/images/building_int_1.webp" alt="Gebetsraum unserer Moschee" width="680" height="510">
-          </figure>
+    <section class="hero-split" id="home">
+      <div class="hero-split-text">
+        <p class="eyebrow">Moscheegemeinde in Wuppertal-Elberfeld</p>
+        <h1 class="hero-split-title">Wuppertaler Integrations- und Bildungsverein</h1>
+        <p class="hero-split-lead">Gebet, Unterricht für Kinder und Begegnung unter einem Dach. Seit den 1970er Jahren, offen für alle.</p>
+        <div class="hero-buttons">
+          <a href="ueber-uns.html" class="btn btn-accent" id="heroBtnAbout">Über uns</a>
+          <a href="kontakt.html" class="btn btn-outline" id="heroBtnContact">Anfahrt</a>
         </div>
+      </div>
+      <div class="hero-split-img">
+        <img src="assets/images/building_int_1.webp" alt="Gebetsraum unserer Moschee" width="680" height="510">
       </div>
     </section>
 
     <section class="section section-bg-white">
       <div class="container">
-        <div class="services-grid services-grid-4">
-          <a href="ueber-uns.html" class="service-card service-card-link">
-            <h3>Über uns</h3>
-            <p>Die erste Moscheegemeinschaft Wuppertals, gemeinnützig und parteipolitisch neutral.</p>
-            <span class="card-more">Mehr erfahren</span>
+        <div class="facts">
+          <div class="fact">
+            <div class="fact-value">1970er</div>
+            <div class="fact-label">erste Moscheegemeinschaft in Wuppertal</div>
+          </div>
+          <div class="fact">
+            <div class="fact-value">Wochenende</div>
+            <div class="fact-label">Koran- und Religionsunterricht für Kinder</div>
+          </div>
+          <div class="fact">
+            <div class="fact-value">Gemeinnützig</div>
+            <div class="fact-label">parteipolitisch neutral, VR 4057</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tint-rose">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Angebote</p>
+          <h2 class="section-head-title">Was wir machen</h2>
+        </div>
+        <div class="photo-cards">
+          <a href="dienste.html" class="photo-card">
+            <div class="photo-card-img"><img loading="lazy" decoding="async" src="assets/images/building_int_6.webp" alt="Gemeinschaftsgebet im Gebetsraum"></div>
+            <div class="photo-card-body">
+              <h3>Gebet</h3>
+              <p>Die täglichen Gebete und das Freitagsgebet in Gemeinschaft.</p>
+              <span class="card-more">Mehr erfahren</span>
+            </div>
           </a>
-          <a href="dienste.html" class="service-card service-card-link">
-            <h3>Unterricht</h3>
-            <p>Koran- und Religionsunterricht für Kinder im Grundschulalter, dazu Nachhilfe.</p>
-            <span class="card-more">Zu den Angeboten</span>
+          <a href="dienste.html" class="photo-card">
+            <div class="photo-card-img"><img loading="lazy" decoding="async" src="assets/images/building_int_4.webp" alt="Koranpulte im Gebetsraum"></div>
+            <div class="photo-card-body">
+              <h3>Unterricht</h3>
+              <p>Koran- und Religionsunterricht für Kinder, dazu Nachhilfe.</p>
+              <span class="card-more">Zu den Angeboten</span>
+            </div>
           </a>
-          <a href="projekte.html" class="service-card service-card-link">
-            <h3>Projekte</h3>
-            <p>Wir planen ein Mädcheninternat für die theologische Ausbildung.</p>
-            <span class="card-more">Zum Projekt</span>
-          </a>
-          <a href="spenden.html" class="service-card service-card-link">
-            <h3>Spenden</h3>
-            <p>So unterstützen Sie unsere Arbeit. Mit Zakat-Rechner.</p>
-            <span class="card-more">Unterstützen</span>
+          <a href="projekte.html" class="photo-card">
+            <div class="photo-card-img"><img loading="lazy" decoding="async" src="assets/images/building_int_5.webp" alt="Gebetsraum mit Kronleuchtern"></div>
+            <div class="photo-card-body">
+              <h3>Projekte</h3>
+              <p>Wir planen ein Mädcheninternat für die theologische Ausbildung.</p>
+              <span class="card-more">Zum Projekt</span>
+            </div>
           </a>
         </div>
+      </div>
+    </section>
+
+    <section class="quote-band">
+      <div class="container">
+        <blockquote class="quote">
+          <p>„Der beste Mensch ist derjenige, der den Menschen nützlich ist.“</p>
+          <cite>Prophet Muhammad (s.a.w.)</cite>
+        </blockquote>
       </div>
     </section>
 
@@ -186,7 +216,7 @@
   <button type="button" class="scroll-top-btn" aria-label="Nach oben scrollen" id="scrollTopBtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 15l-6-6-6 6"/></svg></button>
 
   <!-- JavaScript File -->
-  <script src="assets/js/main.js?v=20261102"></script>
+  <script src="assets/js/main.js?v=2026110203"></script>
 </body>
 
 </html>

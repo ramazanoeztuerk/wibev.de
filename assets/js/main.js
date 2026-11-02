@@ -1,6 +1,6 @@
 /**
  * Wuppertaler Integrations- und Bildungsverein e.V. (WIB)
- * JavaScript – Navigation, Einblenden, Parallax, Formulare
+ * JavaScript – Navigation, Einblenden, Formulare
  * Übergänge und Tipp-Feedback: motion.js / motion.css
  */
 (function () {
@@ -14,7 +14,6 @@
     initMobileNav();
     initScrollTop();
     initScrollReveal();
-    initHeroParallax();
     initLinkSmoothScroll();
     initZakatCalculator();
     initContactForm();
@@ -138,36 +137,6 @@
     });
   }
 
-  /* ═══════════════════════════════════════════════════════════════════════
-     HERO PARALLAX
-     ═══════════════════════════════════════════════════════════════════════ */
-  function initHeroParallax() {
-    const hero = document.querySelector('.hero');
-    if (!hero || reduceMotion) return;
-
-    window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY;
-      const heroHeight = hero.offsetHeight;
-
-      if (scrollY <= heroHeight) {
-        // Parallax the ::before pseudo background
-        const speed = 0.35;
-        const yOffset = scrollY * speed;
-        hero.style.setProperty('--parallax-y', `${yOffset}px`);
-
-      }
-    }, { passive: true });
-
-    // Apply the CSS variable to a style tag for the ::before
-    const style = document.createElement('style');
-    style.id = 'parallax-style';
-    style.textContent = `
-      .hero::before {
-        transform: translateY(var(--parallax-y, 0px)) scale(1.1);
-      }
-    `;
-    document.head.appendChild(style);
-  }
 
   /* ═══════════════════════════════════════════════════════════════════════
      SMOOTH SCROLL FOR ANCHOR LINKS (except hash routes)

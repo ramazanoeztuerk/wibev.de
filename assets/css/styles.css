@@ -2068,19 +2068,19 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Lora', Georgia, serif; font-weight: 600; 
 
 /* Kleine Tulpe vor den Labels */
 .eyebrow::before {
-  width: 14px;
-  height: 19px;
-  background: url('../images/tulip.svg') center / contain no-repeat;
+  width: 8px;
+  height: 24px;
+  background: url('../images/logo-tulpe.webp') center / contain no-repeat;
 }
 
 /* Tulpe über Abschnittstiteln der Unterseiten */
 .section-title-wrapper::before {
   content: '';
   display: block;
-  width: 18px;
-  height: 24px;
+  width: 10px;
+  height: 32px;
   margin-bottom: 12px;
-  background: url('../images/tulip.svg') center / contain no-repeat;
+  background: url('../images/logo-tulpe.webp') center / contain no-repeat;
 }
 
 /* Große, zarte Tulpe als Wasserzeichen */
@@ -2091,12 +2091,12 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Lora', Georgia, serif; font-weight: 600; 
   content: '';
   position: absolute;
   z-index: -1;
-  background: url('../images/tulip.svg') center / contain no-repeat;
-  opacity: 0.09;
+  background: url('../images/logo-strauss.webp') center / contain no-repeat;
+  opacity: 0.1;
   pointer-events: none;
 }
-.hero-split-text::after { width: 260px; height: 346px; right: -70px; bottom: -150px; transform: rotate(-14deg); }
-.subpage-hero::after { width: 170px; height: 226px; right: max(28px, calc((100vw - var(--max-width)) / 2 + 28px)); bottom: -60px; transform: rotate(10deg); }
+.hero-split-text::after { width: 300px; height: 373px; right: -60px; bottom: -110px; transform: rotate(-8deg); }
+.subpage-hero::after { width: 190px; height: 236px; right: max(28px, calc((100vw - var(--max-width)) / 2 + 28px)); bottom: -70px; transform: none; opacity: 0.14; }
 
 /* Kurzfakten in den drei Logofarben */
 .fact:nth-child(2) { border-left-color: var(--slate); }
@@ -2117,7 +2117,7 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Lora', Georgia, serif; font-weight: 600; 
   margin: 0 auto;
   max-width: 420px;
   background:
-    url('../images/tulip.svg') center / auto 34px no-repeat,
+    url('../images/logo-tulpe.webp') center / auto 34px no-repeat,
     linear-gradient(var(--line), var(--line)) left center / calc(50% - 28px) 1px no-repeat,
     linear-gradient(var(--line), var(--line)) right center / calc(50% - 28px) 1px no-repeat;
 }
@@ -2126,10 +2126,12 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Lora', Georgia, serif; font-weight: 600; 
 .quote::before {
   content: '';
   display: block;
-  width: 150px;
-  height: 80px;
-  margin: 0 auto 28px;
-  background: url('../images/tulip-trio.svg') center / contain no-repeat;
+  width: 132px;
+  height: 132px;
+  margin: 0 auto 32px;
+  border-radius: 50%;
+  background: url('../images/logo-strauss.webp') center 55% / 74% auto no-repeat, var(--bg-warm);
+  box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.08), 0 0 0 7px rgba(255, 255, 255, 0.18);
 }
 .quote-band {
   background:
@@ -2150,8 +2152,8 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Lora', Georgia, serif; font-weight: 600; 
 .nav-link.active { color: var(--accent-color); }
 
 @media (max-width: 768px) {
-  .hero-split-text::after { width: 200px; height: 266px; right: -30px; bottom: -50px; }
-  .subpage-hero::after { width: 110px; height: 146px; right: 16px; bottom: -40px; }
+  .hero-split-text::after { width: 210px; height: 261px; right: -40px; bottom: -60px; }
+  .subpage-hero::after { width: 120px; height: 149px; right: 12px; bottom: -44px; }
 }
 .section-bg-sand { background: var(--slate-light); }
 .book-image-pane { background: var(--tulip-rose); }

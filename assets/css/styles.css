@@ -2056,3 +2056,103 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Lora', Georgia, serif; font-weight: 600; 
 }
 .section-title-wrapper { text-align: left; margin-left: 0; }
 .zakat-intro { text-align: left; margin-left: 0; }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TULPEN-AKZENTE – Motiv und Farben aus dem Logo
+   Rot = Tulpe, Graublau = seitliche Blüten, Salbei = Blätter
+   ═══════════════════════════════════════════════════════════════════════════ */
+:root {
+  --tulip-rose: #f7efec;
+  --slate-light: #eef2f4;
+}
+
+/* Kleine Tulpe vor den Labels */
+.eyebrow::before {
+  width: 14px;
+  height: 19px;
+  background: url('../images/tulip.svg') center / contain no-repeat;
+}
+
+/* Tulpe über Abschnittstiteln der Unterseiten */
+.section-title-wrapper::before {
+  content: '';
+  display: block;
+  width: 18px;
+  height: 24px;
+  margin-bottom: 12px;
+  background: url('../images/tulip.svg') center / contain no-repeat;
+}
+
+/* Große, zarte Tulpe als Wasserzeichen */
+.hero-split-text,
+.subpage-hero { position: relative; overflow: hidden; isolation: isolate; }
+.hero-split-text::after,
+.subpage-hero::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  background: url('../images/tulip.svg') center / contain no-repeat;
+  opacity: 0.09;
+  pointer-events: none;
+}
+.hero-split-text::after { width: 260px; height: 346px; right: -70px; bottom: -150px; transform: rotate(-14deg); }
+.subpage-hero::after { width: 170px; height: 226px; right: max(28px, calc((100vw - var(--max-width)) / 2 + 28px)); bottom: -60px; transform: rotate(10deg); }
+
+/* Kurzfakten in den drei Logofarben */
+.fact:nth-child(2) { border-left-color: var(--slate); }
+.fact:nth-child(3) { border-left-color: var(--sage); }
+
+/* Bildkarten: farbige Kante oben */
+.photo-card { border-top: 3px solid var(--accent-color); }
+.photo-card:nth-child(2) { border-top-color: var(--slate); }
+.photo-card:nth-child(3) { border-top-color: var(--sage); }
+.photo-card:hover { border-color: var(--primary-alpha-md); }
+.photo-card:hover { border-top-color: var(--accent-color); }
+.photo-card:nth-child(2):hover { border-top-color: var(--slate); }
+.photo-card:nth-child(3):hover { border-top-color: var(--sage); }
+
+/* Zwischentrenner mit Tulpe */
+.ornament {
+  height: 34px;
+  margin: 0 auto;
+  max-width: 420px;
+  background:
+    url('../images/tulip.svg') center / auto 34px no-repeat,
+    linear-gradient(var(--line), var(--line)) left center / calc(50% - 28px) 1px no-repeat,
+    linear-gradient(var(--line), var(--line)) right center / calc(50% - 28px) 1px no-repeat;
+}
+
+/* Zitat-Band: drei Tulpen wie im Logo */
+.quote::before {
+  content: '';
+  display: block;
+  width: 150px;
+  height: 80px;
+  margin: 0 auto 28px;
+  background: url('../images/tulip-trio.svg') center / contain no-repeat;
+}
+.quote-band {
+  background:
+    radial-gradient(ellipse at 50% 120%, rgba(138, 63, 49, 0.35), transparent 60%),
+    var(--primary-dark);
+}
+
+/* Abschnittshintergründe abwechselnd in zarten Logotönen */
+.section-tint-rose { background: var(--tulip-rose); }
+.section-tint-sage { background: var(--sage-light); }
+.section-tint-slate { background: var(--slate-light); }
+.visit-strip { background: var(--sage-light); }
+
+/* Footer: Streifen in den drei Logofarben */
+.footer { border-top: 4px solid; border-image: linear-gradient(90deg, var(--accent-color) 0 33.3%, var(--slate) 33.3% 66.6%, var(--sage) 66.6% 100%) 1; }
+
+/* Aktiver Menüpunkt mit Tulpenrot */
+.nav-link.active { color: var(--accent-color); }
+
+@media (max-width: 768px) {
+  .hero-split-text::after { width: 200px; height: 266px; right: -30px; bottom: -50px; }
+  .subpage-hero::after { width: 110px; height: 146px; right: 16px; bottom: -40px; }
+}
+.section-bg-sand { background: var(--slate-light); }
+.book-image-pane { background: var(--tulip-rose); }
+.zakat-results-panel { background: var(--tulip-rose); }

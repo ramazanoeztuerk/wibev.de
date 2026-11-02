@@ -22,9 +22,9 @@
   <meta property="og:url" content="https://wibev.de/tr/">
   <meta property="og:image" content="https://wibev.de/assets/images/logo.jpg">
   <meta property="og:locale" content="tr_TR">
-  <link rel="stylesheet" href="../assets/css/styles.css?v=20261102">
-  <link rel="stylesheet" href="../assets/css/motion.css?v=20261102">
-  <script src="../assets/js/motion.js?v=20261102"></script>
+  <link rel="stylesheet" href="../assets/css/styles.css?v=2026110202">
+  <link rel="stylesheet" href="../assets/css/motion.css?v=2026110202">
+  <script src="../assets/js/motion.js?v=2026110202"></script>
 </head>
 
 <body>
@@ -65,51 +65,81 @@
   </header>
 
   <main>
-    <section class="hero" id="home">
-      <div class="container">
-        <div class="hero-grid">
-          <div class="hero-content">
-            <p class="hero-eyebrow">1970'li yıllardan beri Wuppertal-Elberfeld'de cami cemaati</p>
-            <h1 class="hero-title">Wuppertal Entegrasyon ve Eğitim Derneği</h1>
-            <p class="hero-description">
-              Namaz, çocuklar için ders ve buluşma tek çatı altında. Herkese kapımız açıktır.
-            </p>
-            <div class="hero-buttons">
-              <a href="hakkimizda.html" class="btn btn-accent" id="heroBtnAbout">Hakkımızda</a>
-              <a href="iletisim.html" class="btn btn-outline" id="heroBtnContact">Ulaşım</a>
-            </div>
-          </div>
-          <figure class="hero-photo">
-            <img src="../assets/images/building_int_1.webp" alt="Camimizin namaz salonu" width="680" height="510">
-          </figure>
+    <section class="hero-split" id="home">
+      <div class="hero-split-text">
+        <p class="eyebrow">Wuppertal-Elberfeld'de cami cemaati</p>
+        <h1 class="hero-split-title">Wuppertal Entegrasyon ve Eğitim Derneği</h1>
+        <p class="hero-split-lead">Namaz, çocuklar için ders ve buluşma tek çatı altında. 1970'li yıllardan beri, herkese açık.</p>
+        <div class="hero-buttons">
+          <a href="hakkimizda.html" class="btn btn-accent" id="heroBtnAbout">Hakkımızda</a>
+          <a href="iletisim.html" class="btn btn-outline" id="heroBtnContact">Ulaşım</a>
         </div>
+      </div>
+      <div class="hero-split-img">
+        <img src="../assets/images/building_int_1.webp" alt="Camimizin namaz salonu" width="680" height="510">
       </div>
     </section>
 
     <section class="section section-bg-white">
       <div class="container">
-        <div class="services-grid services-grid-4">
-          <a href="hakkimizda.html" class="service-card service-card-link">
-            <h3>Hakkımızda</h3>
-            <p>Wuppertal'ın ilk cami cemaati; kamu yararına çalışan ve siyasi partiler karşısında tarafsız.</p>
-            <span class="card-more">Devamı</span>
+        <div class="facts">
+          <div class="fact">
+            <div class="fact-value">1970'ler</div>
+            <div class="fact-label">Wuppertal'ın ilk cami cemaati</div>
+          </div>
+          <div class="fact">
+            <div class="fact-value">Hafta sonu</div>
+            <div class="fact-label">Çocuklar için Kur'an ve din dersi</div>
+          </div>
+          <div class="fact">
+            <div class="fact-value">Kamu yararına</div>
+            <div class="fact-label">siyasi partiler karşısında tarafsız, VR 4057</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Hizmetler</p>
+          <h2 class="section-head-title">Neler yapıyoruz</h2>
+        </div>
+        <div class="photo-cards">
+          <a href="hizmetler.html" class="photo-card">
+            <div class="photo-card-img"><img loading="lazy" decoding="async" src="../assets/images/building_int_6.webp" alt="Namaz salonunda cemaat"></div>
+            <div class="photo-card-body">
+              <h3>Namaz</h3>
+              <p>Günlük namazlar ve Cuma namazı cemaatle.</p>
+              <span class="card-more">Devamı</span>
+            </div>
           </a>
-          <a href="hizmetler.html" class="service-card service-card-link">
-            <h3>Dersler</h3>
-            <p>İlkokul çağındaki çocuklar için Kur'an ve din dersi, ayrıca ders desteği.</p>
-            <span class="card-more">Hizmetlerimiz</span>
+          <a href="hizmetler.html" class="photo-card">
+            <div class="photo-card-img"><img loading="lazy" decoding="async" src="../assets/images/building_int_4.webp" alt="Namaz salonunda rahleler"></div>
+            <div class="photo-card-body">
+              <h3>Dersler</h3>
+              <p>Çocuklar için Kur'an ve din dersi, ayrıca ders desteği.</p>
+              <span class="card-more">Hizmetlerimiz</span>
+            </div>
           </a>
-          <a href="projeler.html" class="service-card service-card-link">
-            <h3>Projeler</h3>
-            <p>Dini eğitim için bir kız öğrenci yurdu planlıyoruz.</p>
-            <span class="card-more">Projeye git</span>
-          </a>
-          <a href="bagis.html" class="service-card service-card-link">
-            <h3>Bağış</h3>
-            <p>Çalışmalarımıza nasıl destek olabileceğiniz. Zekat hesaplayıcı ile.</p>
-            <span class="card-more">Destek olun</span>
+          <a href="projeler.html" class="photo-card">
+            <div class="photo-card-img"><img loading="lazy" decoding="async" src="../assets/images/building_int_5.webp" alt="Avizeli namaz salonu"></div>
+            <div class="photo-card-body">
+              <h3>Projeler</h3>
+              <p>Dini eğitim için bir kız öğrenci yurdu planlıyoruz.</p>
+              <span class="card-more">Projeye git</span>
+            </div>
           </a>
         </div>
+      </div>
+    </section>
+
+    <section class="quote-band">
+      <div class="container">
+        <blockquote class="quote">
+          <p>“İnsanların en hayırlısı, insanlara faydalı olandır.”</p>
+          <cite>Peygamber Efendimiz (s.a.v.)</cite>
+        </blockquote>
       </div>
     </section>
 
@@ -186,7 +216,7 @@
   <button type="button" class="scroll-top-btn" aria-label="Yukarı kaydır" id="scrollTopBtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 15l-6-6-6 6"/></svg></button>
 
   <!-- JavaScript File -->
-  <script src="../assets/js/main.js?v=20261102"></script>
+  <script src="../assets/js/main.js?v=2026110202"></script>
 </body>
 
 </html>

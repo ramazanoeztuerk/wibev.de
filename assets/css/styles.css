@@ -2085,7 +2085,12 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Lora', Georgia, serif; font-weight: 600; 
 
 /* Große, zarte Tulpe als Wasserzeichen */
 .hero-split-text,
-.subpage-hero { position: relative; overflow: hidden; isolation: isolate; }
+.subpage-hero { position: relative; isolation: isolate; }
+/* Wasserzeichen ragt nach unten raus und verschwindet hinter dem nächsten Abschnitt */
+.hero-split,
+.subpage-hero { overflow-x: clip; overflow-y: visible; }
+.hero-split + section,
+.subpage-hero + section { position: relative; z-index: 1; }
 .hero-split-text::after,
 .subpage-hero::after {
   content: '';
@@ -2095,8 +2100,8 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Lora', Georgia, serif; font-weight: 600; 
   opacity: 0.1;
   pointer-events: none;
 }
-.hero-split-text::after { width: 300px; height: 373px; right: -60px; bottom: -110px; transform: rotate(-8deg); }
-.subpage-hero::after { width: 190px; height: 236px; right: max(28px, calc((100vw - var(--max-width)) / 2 + 28px)); bottom: -70px; transform: none; opacity: 0.14; }
+.hero-split-text::after { width: 320px; height: 398px; right: -40px; bottom: -150px; transform: rotate(-8deg); }
+.subpage-hero::after { width: 200px; height: 249px; right: max(28px, calc((100vw - var(--max-width)) / 2 + 28px)); bottom: -115px; transform: none; opacity: 0.14; }
 
 /* Kurzfakten in den drei Logofarben */
 .fact:nth-child(2) { border-left-color: var(--slate); }
@@ -2152,8 +2157,8 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Lora', Georgia, serif; font-weight: 600; 
 .nav-link.active { color: var(--accent-color); }
 
 @media (max-width: 768px) {
-  .hero-split-text::after { width: 210px; height: 261px; right: -40px; bottom: -60px; }
-  .subpage-hero::after { width: 120px; height: 149px; right: 12px; bottom: -44px; }
+  .hero-split-text::after { width: 220px; height: 274px; right: -30px; bottom: -110px; }
+  .subpage-hero::after { width: 130px; height: 162px; right: 12px; bottom: -80px; }
 }
 .section-bg-sand { background: var(--slate-light); }
 .book-image-pane { background: var(--tulip-rose); }
